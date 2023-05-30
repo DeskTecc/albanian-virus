@@ -2,7 +2,8 @@
 pub enum Locale {
     English,
     Slovak,
-    Czech
+    Czech,
+    Portuguese
 }
 
 impl Locale {
@@ -11,6 +12,7 @@ impl Locale {
             "en" => Self::English,
             "sk" => Self::Slovak,
             "cz" => Self::Czech,
+            "pt" => Self::Portuguese,
             _ => Self::English
         }
     }
@@ -19,7 +21,8 @@ impl Locale {
         match *self {
             Self::English => "en",
             Self::Czech => "cz",
-            Self::Slovak => "sk"
+            Self::Slovak => "sk",
+            Self::Portuguese => "pt"
         }
     }
 }
@@ -56,6 +59,14 @@ impl Messages {
                            Prosímtě, Vymaž-li si se svojeho operačního systému důležíté soubori a prosím 
                            pošli tento výrus ďělej. 
                            Veliké poděkováni tobě, S posdravem albánsky výrus
+                        "#,
+                     Locale::Portuguese => 
+                        r#"Oi, eu sou um vírus albanês, mas por causa da tecnologia pobre
+                           da minha nação infelizmente eu não sou capaz de prejudicar seu computador
+                           Por favor seja gentil e delete alguns de seus arquivos importantes por si mesmo
+                           e, em seguida, envie este vírus para outros usuários.
+                           Muito obrigado pela sua cooperação
+                           Atenciosamente, vírus albanês
                         "#
                 }
                     .split('\n')
@@ -67,21 +78,24 @@ impl Messages {
                 match *locale {
                     Locale::English => "Virus Is Has Detected In Yor Windows XP OS",
                     Locale::Slovak => "V tvojom Systéme Windows XP SP3 a viššie sa deteknul výrus",
-                    Locale::Czech => "Tvůj Operační sistém Windows XP sp2 a višší sa vyskytol vírus"
+                    Locale::Czech => "Tvůj Operační sistém Windows XP sp2 a višší sa vyskytol vírus",
+                    Locale::Portuguese => "Um vírus foi detectado no seu sistema Windows XP"
                 }.to_string()
             }
             Self::ApologyText => {
                 match *locale {
                     Locale::English => "I am very sorry for bother, please continue with yours daily activities",
                     Locale::Slovak => "Ospravedlňujem sa za rušenie vašej činnosti, pokračujte ďalej, prosím",
-                    Locale::Czech => "Vospravedlňuju-se-li za rušení vaší aktivity, prosím-li pokračujte déle"
+                    Locale::Czech => "Vospravedlňuju-se-li za rušení vaší aktivity, prosím-li pokračujte déle",
+                    Locale::Portuguese => "Sinto muito pelo incômodo, por favor, continue com suas atividades diárias"
                 }.to_string()
             }
             Self::ApologyTitle => {
                 match *locale {
                     Locale::English => "Dearest apologies",
                     Locale::Slovak => "Najsrdečnejšie ospravldnenie",
-                    Locale::Czech => "To nejsrdečnejší ospravedlnění"
+                    Locale::Czech => "To nejsrdečnejší ospravedlnění",
+                    Locale::Portuguese => "Queridas desculpas"
                 }.to_string()
             }
         }
